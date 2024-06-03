@@ -12,4 +12,10 @@ class BienController extends Controller
         $biens = Bien::all();
         return view('biens.accueil', compact('biens'));
     }
+
+    public function detail($id)
+    {
+        $bien = Bien::findOrFail($id);
+        return view('biens.detail', compact('bien'));
+    }
 }

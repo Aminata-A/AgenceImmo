@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('commentaires', function (Blueprint $table) {
             $table->id();
+            $table->string('auteur');
+            $table->text('contenu');
             $table->timestamps();
+            $table->unsignedBigInteger('bien_id');
+            $table->foreign('bien_id')->references('id')->on('biens');
         });
     }
 
@@ -22,6 +26,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('commentaires', function (Blueprint $table) {
+            $table->dropForeign('commentaires_bien_id_foreign');
+            $table->dropColumn('bien_id');
+        });
         Schema::dropIfExists('commentaires');
     }
 };

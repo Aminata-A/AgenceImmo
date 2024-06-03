@@ -16,23 +16,24 @@ class RegisterController extends Controller
     }
 
     public function enregistrer(Request $request)
-{
-    // Validate user input
-    $validatedData = $request->validate([
-        'nom' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:personnels'],
-        'mot_de_passe' => ['required', 'string', 'min:8'], // Add password confirmation
-    ]);
+    {
+        // Valider les données du formulaire
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:personnels',
+            'mot_de_passe' => 'required|string|min:8',
+        ]);
 
-    // Create new personnel record
-    $personnel = Personnel::create($validatedData);
+        // Créer un nouvel enregistrement
+        Personnel::create([
+            'nom' => $request->nom,
+            'email' => $request->email,
+            'mot_de_passe' => Hash::make($request->mot_de_passe),
+        ]);
 
-    // Authenticate the user (if desired)
-    // auth()->login($personnel); // Uncomment this line if automatic login is needed
-
-    // Redirect to appropriate location (e.g., success page)
-    return redirect('/')->with('success', 'Votre inscription a été effectuée avec succès!');
-}
+        // Rediriger avec un message de succès
+        return redirect('/')->with('success', 'Inscription réussie');
+    }
 
 
 

@@ -15,7 +15,7 @@ class Personnel extends Authenticatable
     protected $table = 'personnels'; // Assurez-vous que ce nom correspond à votre table
 
     protected $fillable = [
-        'name',
+        'nom',
         'email',
         'mot_de_passe', // Remplacez par le nom de votre champ de mot de passe
     ];

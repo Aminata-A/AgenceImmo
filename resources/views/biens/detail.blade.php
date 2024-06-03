@@ -75,7 +75,10 @@
                 </p>
                 
             </div>
+           <div class="d-flex justify-content-between">
             <a href="{{ route('accueil') }}" class="btn btn-primary">Retour à la liste des articles</a>
+            <a href="{{ route('modification', $bien->id) }}" class="btn btn-warning">Modifier</a>
+           </div>
         </div>
     </div>
     <div class="container mt-5">

@@ -15,5 +15,7 @@ Route::get('biens/ajouter', [BienController::class, 'ajout'])->name('ajout');
 Route::post('biens/sauvegarder', [BienController::class, 'sauvegarde'])->name('sauvegarde');
 
 
-Route::get('biens/modifier', [BienController::class, 'modifier'])->name('modification');
-Route::post('biens/traiter', [BienController::class, 'traiter'])->name('traitement');
+Route::get('biens/modifier/{id}', [BienController::class, 'modifier'])->name('modification')->where('id', '[0-9]');
+Route::post('/biens/{id}/traiter', [BienController::class, 'traiter'])->name('biens.traiter');
+
+

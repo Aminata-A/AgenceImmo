@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bien;
+use App\Models\Commentaire;
 use Illuminate\Http\Request;
 
 class BienController extends Controller
@@ -16,7 +17,8 @@ class BienController extends Controller
     public function detail($id)
     {
         $bien = Bien::findOrFail($id);
-        return view('biens.detail', compact('bien'));
+        $commentaires = Commentaire::where('bien_id', $id)->paginate(2);
+        return view('biens.detail', compact('bien', 'commentaires'));
     }
 
     public function ajout()

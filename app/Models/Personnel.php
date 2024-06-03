@@ -12,41 +12,32 @@ class Personnel extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $table = 'personnels'; // Assurez-vous que ce nom correspond à votre table
+
     protected $fillable = [
-        'nom',
+        'name',
         'email',
-        'mot_de_passe',
+        'mot_de_passe', // Remplacez par le nom de votre champ de mot de passe
     ];
+
+    protected $hidden = [
+        'mot_de_passe', // Remplacez par le nom de votre champ de mot de passe
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    // Méthode pour obtenir le mot de passe
+    public function getAuthPassword()
+    {
+        return $this->mot_de_passe; // Remplacez par le nom de votre champ de mot de passe
+    }
 
     public function biens(): HasMany
     {
         return $this->hasMany(Bien::class);
     }
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'mot_de_passe',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'mot_de_passe' => 'hashed',
-        ];
-    }
+   
 }

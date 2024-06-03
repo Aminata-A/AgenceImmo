@@ -86,20 +86,20 @@
             <div>
                 <h1><i class="fas fa-comment"></i> Commentaires</h1>
                 <div class="mt-4">
-                    {{-- @foreach($commentaires as $commentaire)
+                    @foreach($commentaires as $commentaire)
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $commentaire->nom_complet_auteur }}</h5>
+                                <h5 class="card-title">{{ $commentaire->auteur }}</h5>
                                 <p class="card-text">{{ $commentaire->contenu }}</p>
-                                <p class="card-text"><small class="text-muted">{{ $commentaire->created_at->format('d/m/Y H:i') }}</small></p>
+                                {{-- <p class="card-text"><small class="text-muted">{{ $commentaire->created_at->format('d/m/Y H:i') }}</small></p> --}}
                             </div>
                         </div>
-                    @endforeach --}}
-                    {{-- <div class="row">
+                    @endforeach
+                    <div class="row">
                         <div class="col">
                             {{ $commentaires->links() }}
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
             <form class="col-6" action="#" method="post">

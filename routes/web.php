@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BienController;
+use App\Http\Controllers\CommentaireController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -19,3 +20,5 @@ Route::get('biens/modifier/{id}', [BienController::class, 'modifier'])->name('mo
 Route::post('/biens/{id}/traiter', [BienController::class, 'traiter'])->name('biens.traiter');
 
 Route::get('biens/supprimer/{id}', [BienController::class, 'supprimer'])->name('suppression')->where('id', '[0-9]');
+
+Route::post('biens/{bien_id}/commentaires', [CommentaireController::class, 'insertion'])->name('insertion');

@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('adresse');            
             $table->boolean('statut')->default(false);           
             $table->timestamps();
+            
+            $table->unsignedBigInteger('personnel_id');
+            $table->foreign('personnel_id')->references('id')->on('personnels');
         });
     }
 
@@ -27,6 +30,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('biens', function (Blueprint $table) {
+            $table->dropForeign('biens_personnel_id_foreign');
+            $table->dropColumn('personnel_id');
+        });
         Schema::dropIfExists('biens');
     }
 };

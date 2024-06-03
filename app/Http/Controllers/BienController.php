@@ -31,7 +31,7 @@ class BienController extends Controller
             'categorie' => 'required',
             'image' => 'required|url',
             'description' => 'required',
-            'adresse' =>'required',
+            'adresse' => 'required',
             'statut' => 'required|boolean',
             'personnel_id' => 'required|integer'
         ]);
@@ -45,31 +45,35 @@ class BienController extends Controller
     {
         $bien = Bien::findOrFail($id);
         return view('biens.modification', compact('bien'));
-
     }
 
     public function traiter(Request $request, $id)
-{
-    // Valider les données du formulaire
-    $validatedData = $request->validate([
-        'nom' => 'required|max:255',
-        'categorie' => 'required',
-        'image' => 'required|url',
-        'description' => 'required',
-        'adresse' => 'required',
-        'statut' => 'required|boolean',
-        'personnel_id' => 'required|integer'
-    ]);
+    {
+        // Valider les données du formulaire
+        $validatedData = $request->validate([
+            'nom' => 'required|max:255',
+            'categorie' => 'required',
+            'image' => 'required|url',
+            'description' => 'required',
+            'adresse' => 'required',
+            'statut' => 'required|boolean',
+            'personnel_id' => 'required|integer'
+        ]);
 
-    // Trouver l'enregistrement par ID
-    $bien = Bien::findOrFail($id);
+        // Trouver l'enregistrement par ID
+        $bien = Bien::findOrFail($id);
 
-    // Mettre à jour l'enregistrement avec les données validées
-    $bien->update($validatedData);
+        // Mettre à jour l'enregistrement avec les données validées
+        $bien->update($validatedData);
 
-    // Rediriger avec un message de succès
-    return redirect('/biens/'.$bien->id);
-}
+        // Rediriger avec un message de succès
+        return redirect('/biens/' . $bien->id);
+    }
 
-    
+    public function supprimer($id)
+    {
+        $bien = Bien::findOrFail($id);
+        $bien->delete();
+        return redirect('/');
+    }
 }

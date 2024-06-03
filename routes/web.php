@@ -18,4 +18,4 @@ Route::post('biens/sauvegarder', [BienController::class, 'sauvegarde'])->name('s
 Route::get('biens/modifier/{id}', [BienController::class, 'modifier'])->name('modification')->where('id', '[0-9]');
 Route::post('/biens/{id}/traiter', [BienController::class, 'traiter'])->name('biens.traiter');
 
-
+Route::get('biens/supprimer/{id}', [BienController::class, 'supprimer'])->name('suppression')->where('id', '[0-9]');

@@ -9,3 +9,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [BienController::class, 'accueil'])->name('accueil');
+Route::get('/biens/{id}', [BienController::class, 'detail'])->name('detail');
+

@@ -48,27 +48,42 @@
         <div class="d-flex justify-content-between">
             <div class="mb-3 col-6">
                 <label for="nom" class="form-label">Nom</label>
-                <input type="text" name="nom" class="form-control" id="nom">
+                <input type="text" name="nom" class="form-control" id="nom" value="{{ old('name') }}">
+                @if ($errors->has('nom'))
+                <div class="error text-danger">{{ $errors->first('nom') }}</div>
+            @endif
               </div>
               <div class="mb-3 col-5">
                   <label for="categorie" class="form-label">Catégorie</label>
-                  <input type="text" name="categorie" class="form-control" id="categorie">
+                  <input type="text" name="categorie" class="form-control" id="categorie" value="{{ old('categorie') }}">
+                  @if ($errors->has('categorie'))
+                <div class="error text-danger">{{ $errors->first('categorie') }}</div>
+            @endif
                 </div>
         </div>
         <div class="d-flex justify-content-between">
             <div class="mb-3 col-6 ">
                 <label for="image" class="form-label">Url de l'image</label>
-                <input type="text" name="image" class="form-control" id="image">
+                <input type="text" name="image" class="form-control" id="image" value="{{ old('image') }}">
+                @if ($errors->has('image'))
+                <div class="error text-danger">{{ $errors->first('image') }}</div>
+            @endif
               </div>
               <div class="mb-3 col-5">
                   <label for="adresse" class="form-label">Adresse</label>
-                  <input type="text" name="adresse" class="form-control" id="adresse">
+                  <input type="text" name="adresse" class="form-control" id="adresse" value="{{ old('adresse') }}">
+                  @if ($errors->has('adresse'))
+                <div class="error text-danger">{{ $errors->first('adresse') }}</div>
+            @endif
                 </div>
         </div>
         
             <div class="mb-3 col-12 ">
                 <label for="description" class="form-label">Description</label>
-                <textarea type="text" name="description" class="form-control" id="description"></textarea>
+                <textarea type="text" name="description" class="form-control" id="description">{{ old('description') }}</textarea>
+                @if ($errors->has('description'))
+                <div class="error text-danger">{{ $errors->first('description') }}</div>
+            @endif
               </div>
         
               <div class="form-check">

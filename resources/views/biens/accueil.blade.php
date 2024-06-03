@@ -17,7 +17,7 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link"href="#">Accueil</a>
+                    <a class="nav-link"href="{{ route('accueil') }}"">Accueil</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Biens</a>
@@ -54,7 +54,7 @@
             <p class="btn btn-outline-success">disponible</p>
         @endif
          </div>
-          <a href="#" class="btn btn-primary">Voir détails</a>
+          <a href="{{ route('detail', $bien->id) }}" class="btn btn-primary">Voir détails</a>
         </div>
             
         @endforeach

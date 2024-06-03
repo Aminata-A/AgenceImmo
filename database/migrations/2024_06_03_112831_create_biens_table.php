@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('nom');
             $table->string('categorie');
             $table->text('description');
-            $table->string('adresse');            
+            $table->string('adresse'); 
+            $table->string('image');            
             $table->boolean('statut')->default(false);           
             $table->timestamps();
             

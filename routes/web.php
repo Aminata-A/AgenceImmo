@@ -12,7 +12,7 @@ use App\Http\Controllers\Auth\RegisterController;
 // });
 
 
-Route::get('/', [BienController::class, 'accueil'])->name('accueil')->middleware('auth');
+Route::get('/', [BienController::class, 'accueil'])->name('accueil');
 Route::get('/biens/{id}', [BienController::class, 'detail'])->name('detail')->where('id', '[0-9]');
 
 Route::get('biens/ajouter', [BienController::class, 'ajout'])->name('ajout');

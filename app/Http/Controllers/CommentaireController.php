@@ -16,6 +16,6 @@ class CommentaireController extends Controller
 
         $valide['bien_id'] = $bien_id;
         Commentaire::create($valide);
-        return redirect('/biens/' . $bien_id);
+        return redirect('biens/' . $bien_id);
     }
 }

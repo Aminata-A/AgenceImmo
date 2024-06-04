@@ -32,7 +32,7 @@ class RegisterController extends Controller
         ]);
 
         // Rediriger avec un message de succès
-        return redirect('/')->with('success', 'Inscription réussie');
+        return redirect(route('login'))->with('success', 'Inscription réussie');
     }
 
 

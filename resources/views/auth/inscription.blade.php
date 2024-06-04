@@ -14,21 +14,21 @@
         @csrf
         <div class="mb-3 col-5">
             <label for="nom" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="nom" name="nom" required value="{{ old('nom') }}">
+            <input type="text" class="form-control" id="nom" name="nom"  value="{{ old('nom') }}">
             @if ($errors->has('nom'))
                 <div class="error text-danger">{{ $errors->first('nom') }}</div>
             @endif
         </div>
         <div class="mb-3 col-5">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required value="{{ old('email') }}">
+            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
             @if ($errors->has('email'))
                 <div class="error text-danger">{{ $errors->first('email') }}</div>
             @endif
         </div>
         <div class="mb-3 col-5">
             <label for="password" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="password" name="mot_de_passe" required>
+            <input type="password" class="form-control" id="password" name="mot_de_passe">
             @if ($errors->has('mot_de_passe'))
                 <div class="error text-danger">{{ $errors->first('mot_de_passe') }}</div>
             @endif

@@ -159,7 +159,7 @@
             </div>
         </div>
 
-        <a href="{{ route('biens') }}" class="d-flex justify-content-end"> Voir Plus</a>
+        <a href="{{ route('biens') }}" class="d-flex justify-content-end mb-4" > Voir Plus</a>
         
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

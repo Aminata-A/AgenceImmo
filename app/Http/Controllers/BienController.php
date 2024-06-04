@@ -51,7 +51,7 @@ class BienController extends Controller
 
         Bien::create($request->all()); // Crée un nouveau bien avec les données validées
 
-        return redirect('/'); // Redirige vers la page d'accueil
+        return redirect('/biens'); // Redirige vers la page d'accueil
     }
 
     // Méthode pour afficher le formulaire de modification d'un bien

@@ -40,7 +40,7 @@ class LoginController extends Controller
 
         // Rediriger avec une erreur si l'authentification échoue
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+            'email' => 'Email invalide !',
+        ])->onlyInput('email');
     }
 }

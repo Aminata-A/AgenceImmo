@@ -10,8 +10,12 @@ class BienController extends Controller
 {
     public function accueil()
     {
-        $biens = Bien::all();
+        $biens = Bien::take(3)->get();
         return view('biens.accueil', compact('biens'));
+    }    public function biens()
+    {
+        $biens = Bien::paginate(12);
+        return view('biens.biens', compact('biens'));
     }
 
     public function detail($id)

@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <style>
+        h1{
+            font-size: 3rem;
+        }
+        .carousel-caption h5 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .carousel-caption p {
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
         .card-img-top {
             width: 100%;
             height: 200px; /* Taille uniforme pour les images */
@@ -64,7 +76,7 @@
                         @endauth
                         @guest
                         <div class="nav-item">
-                            <a class="nav-link btn btn-success text-white" href="{{ route('login') }}">Je suis du personnel</a>
+                            <a class="nav-link btn btn-primary text-white" href="{{ route('login') }}">Je suis du personnel</a>
                         </div>
                         @endguest
                     </div>
@@ -75,27 +87,27 @@
     </header>
 
     <section>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3000">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100" style="height: 100vh" src="https://i.f1g.fr/media/eidos/805x453_crop/2022/02/25/XVMbb611c8c-9561-11ec-b001-059cef568df6.jpg" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>First Slide</h5>
-                        <p>Description for the first slide.</p>
+                        <h5>Maison</h5>
+                        <p>Explorez cette magnifique maison avec des espaces lumineux et modernes.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" style="height: 100vh" src="https://lappartement-immobilier.com/wp-content/uploads/2023/10/MG_9242-1220x430.jpg" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Second Slide</h5>
-                        <p>Description for the second slide.</p>
+                        <h5>Salon/Appartement</h5>
+                        <p>Détendez-vous dans ce salon élégant ou profitez de l'appartement spacieux.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" style="height: 100vh" src="https://lekiosqueimmobilier.fr/wp-content/uploads/Promgramme-immobilier-neuf-appartement-Duplex-Ateliers-Vaugirards-Paris-19-PTZ-Chambre.png" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Third Slide</h5>
-                        <p>Description for the third slide.</p>
+                        <h5>Chambre à Coucher</h5>
+                        <p>Découvrez cette chambre à coucher confortable et sereine pour des nuits paisibles.</p>
                     </div>
                 </div>
             </div>
@@ -112,7 +124,7 @@
     
     
     <div class="container mt-5">
-        <h1>Accueil</h1>
+        <h1>Bienvenue</h1>
         <div class="container mt-5">
             <div class="row">
                 @foreach ($biens as $bien)

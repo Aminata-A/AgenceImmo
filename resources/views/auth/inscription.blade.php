@@ -34,6 +34,8 @@
             @endif
         </div>
         <button type="submit" class="btn btn-primary">S'inscrire</button>
+        <a href="{{ route('login') }}" class="btn btn-link">Se connecter</a>
+
     </form>
 </div>
 

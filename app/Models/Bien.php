@@ -11,6 +11,7 @@ class Bien extends Model
 {
     use HasFactory;
 
+    // Les attributs qui sont assignables en masse
     protected $fillable = [
         'nom',
         'categorie',
@@ -19,15 +20,17 @@ class Bien extends Model
         'adresse',
         'statut',
         'personnel_id',
-
     ];
 
+    // Définition de la relation "un bien a plusieurs commentaires"
     public function commentaires(): HasMany
     {
         return $this->hasMany(Commentaire::class);
     }
+
+    // Définition de la relation "un bien appartient à un personnel"
     public function personnel(): BelongsTo
     {
-        return $this->BelongsTo(Personnel::class);
+        return $this->belongsTo(Personnel::class);
     }
 }

@@ -128,7 +128,7 @@
         <div class="container mt-5">
             <div class="row">
                 @foreach ($biens as $bien)
-                <div class="col-md-3 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card">
                         <img src="{{ $bien->image }}" class="card-img-top" alt="salon duplex">
                         <div class="card-body">
@@ -136,7 +136,7 @@
                             <p class="card-text">{{ $bien->created_at->format('d/m/Y') }}</p>
                             <div class="status-badge">
                                 @if ($bien->statut == 1)
-                                <span class="badge bg-danger">Vendu</span>
+                                <span class="badge bg-danger">Occupé</span>
                                 @else
                                 <span class="badge bg-success">Disponible</span>
                                 @endif

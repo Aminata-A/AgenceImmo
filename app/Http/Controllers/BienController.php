@@ -10,7 +10,7 @@ class BienController extends Controller
 {
     public function accueil()
     {
-        $biens = Bien::all();
+        $biens = Bien::take(3)->get();
         return view('biens.accueil', compact('biens'));
     }
 

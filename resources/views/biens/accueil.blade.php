@@ -6,7 +6,21 @@
     <title>Agence Immo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <style>
+        h1{
+            font-size: 3rem;
+        }
+        .carousel-caption h5 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .carousel-caption p {
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
         .card-img-top {
             width: 100%;
             height: 200px; /* Taille uniforme pour les images */
@@ -40,7 +54,7 @@
                             <a class="nav-link" href="{{ route('accueil') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Biens</a>
+                            <a class="nav-link" href="{{ route('biens') }}">Biens</a>
                         </li>
                         @auth
                         <li class="nav-item">
@@ -62,7 +76,7 @@
                         @endauth
                         @guest
                         <div class="nav-item">
-                            <a class="nav-link btn btn-success text-white" href="{{ route('login') }}">Je suis du personnel</a>
+                            <a class="nav-link btn btn-light text-primary" href="{{ route('login') }}">Je suis du personnel</a>
                         </div>
                         @endguest
                     </div>
@@ -71,13 +85,50 @@
             </div>
         </nav>
     </header>
+
+    <section>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" style="height: 100vh" src="https://i.f1g.fr/media/eidos/805x453_crop/2022/02/25/XVMbb611c8c-9561-11ec-b001-059cef568df6.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Maison</h5>
+                        <p>Explorez cette magnifique maison avec des espaces lumineux et modernes.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" style="height: 100vh" src="https://lappartement-immobilier.com/wp-content/uploads/2023/10/MG_9242-1220x430.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Salon/Appartement</h5>
+                        <p>Détendez-vous dans ce salon élégant ou profitez de l'appartement spacieux.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" style="height: 100vh" src="https://lekiosqueimmobilier.fr/wp-content/uploads/Promgramme-immobilier-neuf-appartement-Duplex-Ateliers-Vaugirards-Paris-19-PTZ-Chambre.png" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Chambre à Coucher</h5>
+                        <p>Découvrez cette chambre à coucher confortable et sereine pour des nuits paisibles.</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+    
     
     <div class="container mt-5">
-        <h1>Accueil</h1>
+        <h1>Bienvenue</h1>
         <div class="container mt-5">
             <div class="row">
                 @foreach ($biens as $bien)
-                <div class="col-md-3 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card">
                         <img src="{{ $bien->image }}" class="card-img-top" alt="salon duplex">
                         <div class="card-body">
@@ -85,7 +136,7 @@
                             <p class="card-text">{{ $bien->created_at->format('d/m/Y') }}</p>
                             <div class="status-badge">
                                 @if ($bien->statut == 1)
-                                <span class="badge bg-danger">Vendu</span>
+                                <span class="badge bg-danger">Occupé</span>
                                 @else
                                 <span class="badge bg-success">Disponible</span>
                                 @endif
@@ -107,8 +158,13 @@
                 @endforeach
             </div>
         </div>
+
+        <a href="{{ route('biens') }}" class="d-flex justify-content-end"> Voir Plus</a>
         
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
 </html>

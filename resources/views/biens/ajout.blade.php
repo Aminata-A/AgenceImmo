@@ -22,7 +22,7 @@
                             <a class="nav-link" href="{{ route('accueil') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Biens</a>
+                            <a class="nav-link" href="{{ route('biens') }}">Biens</a>
                         </li>
                         @auth
                         <li class="nav-item">
@@ -44,7 +44,7 @@
                         @endauth
                         @guest
                         <div class="nav-item">
-                            <a class="nav-link btn btn-success text-white" href="{{ route('login') }}">Je suis du personnel</a>
+                          <a class="nav-link btn btn-light text-primary" href="{{ route('login') }}">Je suis du personnel</a>
                         </div>
                         @endguest
                     </div>

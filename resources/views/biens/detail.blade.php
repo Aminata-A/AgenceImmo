@@ -9,38 +9,51 @@
 </head>
 <body class="mb-5">
     <header>
-        <nav class="navbar navbar-expand-lg bg-light d-flex justify-content-around px-4">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+            <div class="container">
                 <a class="navbar-brand" href="#">AgenceImmo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link"href="{{ route('accueil') }}">Accueil</a>
+                            <a class="nav-link" href="{{ route('accueil') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Biens</a>
                         </li>
+                        @auth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('ajout') }}">Ajouter un bien</a>
                         </li>
-                        
-                        
+                        @endauth
                     </ul>
-                    
-                    
+                    <div class="navbar-nav">
+                        @auth
+                        <div class="nav-item">
+                            <span class="nav-link">{{ auth()->user()->nom }}</span>
+                        </div>
+                        <div class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-link nav-link text-danger">Se déconnecter</button>
+                            </form>
+                        </div>
+                        @endauth
+                        @guest
+                        <div class="nav-item">
+                            <a class="nav-link btn btn-success text-white" href="{{ route('login') }}">Je suis du personnel</a>
+                        </div>
+                        @endguest
+                    </div>
                     
                 </div>
-                
-                
-            </div>
-            <div>
-                <button class="btn btn-outline-success" type="submit">Connexion</button>
             </div>
         </nav>
     </header>
+    
     <div class="container mt-5">
         <h1>Détails</h1>
         <div class="card">
@@ -62,6 +75,7 @@
                     <p>Date de publication: {{ $bien->created_at->format('d/m/Y') }}</p>
                     <p>Adresse de localisation : {{ $bien->adresse }}</p>
                     <p>Catégorie : {{ $bien->categorie }}</p>
+                    
                 </div>
             </div>
             
@@ -77,7 +91,10 @@
             </div>
             <div class="d-flex justify-content-between">
                 <a href="{{ route('accueil') }}" class="btn btn-primary">Retour à la liste des articles</a>
+                @auth
                 <a href="{{ route('modification', $bien->id) }}" class="btn btn-warning">Modifier</a>
+                @endauth
+                
             </div>
         </div>
     </div>

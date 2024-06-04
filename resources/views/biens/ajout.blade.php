@@ -56,7 +56,10 @@
    <div class="container mt-5">
     <h1>Ajout d'un nouveau bien</h1>
     <form action="{{ route('sauvegarde') }}" method="post">
-        <input type="hidden" name="personnel_id" value="1">
+        @auth
+        <input type="hidden" name="personnel_id" value="{{ auth()->user()->id }}"> 
+        @endauth
+        
         @csrf
         <div class="d-flex justify-content-between">
             <div class="mb-3 col-6">

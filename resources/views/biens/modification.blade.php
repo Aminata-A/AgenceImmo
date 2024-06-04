@@ -55,7 +55,10 @@
    <div class="container mt-5">
     <h1>Mise à jour d'un bien</h1>
     <form action="{{ route('biens.traiter', $bien->id) }}" method="POST">
-        <input type="hidden" name="personnel_id" value="1">
+        @auth
+        <input type="hidden" name="personnel_id" value="{{ auth()->user()->id }}"> 
+        @endauth
+        
         @csrf
         <div class="d-flex justify-content-between">
             <div class="mb-3 col-6">

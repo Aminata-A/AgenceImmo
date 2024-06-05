@@ -29,7 +29,8 @@ return new class extends Migration
             $table->unsignedBigInteger('bien_id');
             
             // Définit 'bien_id' comme clé étrangère, liée à la colonne 'id' de la table 'biens'
-            $table->foreign('bien_id')->references('id')->on('biens');
+            // $table->foreign('bien_id')->references('id')->on('biens');
+            $table->foreign('bien_id')->references('id')->on('biens')->onDelete('cascade');
         });
     }
 

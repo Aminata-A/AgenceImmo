@@ -55,6 +55,12 @@
 </header>
 
 <div class="container mt-5">
+    @if (session('success'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <h1>Détails</h1>
     <div class="card">
         <div class="card-header">
@@ -120,6 +126,7 @@
             </div>
         </div>
         <form class="col-6" action="{{ route('insertion', $bien->id)}}" method="post">
+           
             @csrf
             <div>
                 <div class="mb-3">

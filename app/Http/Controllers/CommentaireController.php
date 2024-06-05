@@ -23,6 +23,6 @@ class CommentaireController extends Controller
         Commentaire::create($validatedData);
 
         // Redirige vers la page de détails du bien
-        return redirect('biens/' . $bien_id);
+        return redirect('biens/' . $bien_id)->with('success', 'Commentaire ajouté avec succès');
     }
 }

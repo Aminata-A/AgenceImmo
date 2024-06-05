@@ -51,7 +51,7 @@ class BienController extends Controller
 
         Bien::create($request->all()); // Crée un nouveau bien avec les données validées
 
-        return redirect('/biens'); // Redirige vers la page d'accueil
+        return redirect('/biens')->with('success', 'Bien ajouté avec succès'); // Redirige vers la page d'accueil
     }
 
     // Méthode pour afficher le formulaire de modification d'un bien
@@ -77,7 +77,8 @@ class BienController extends Controller
         $bien = Bien::findOrFail($id); // Trouve le bien par son ID ou renvoie une erreur 404
         $bien->update($validatedData); // Met à jour le bien avec les données validées
 
-        return redirect('/biens/' . $bien->id); // Redirige vers la page de détails du bien
+        return redirect('/biens/' . $bien->id)->with('success', 'Modification réussie'); // Redirige vers la page de détails du bien
+        
     }
 
     // Méthode pour supprimer un bien
@@ -85,6 +86,6 @@ class BienController extends Controller
     {
         $bien = Bien::findOrFail($id); // Trouve le bien par son ID ou renvoie une erreur 404
         $bien->delete(); // Supprime le bien
-        return redirect('/'); // Redirige vers la page d'accueil
+        return redirect('/biens')->with('statut', 'Bien supprimé avec succès'); // Redirige vers la page des biens
     }
 }

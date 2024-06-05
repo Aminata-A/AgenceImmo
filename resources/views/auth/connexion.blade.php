@@ -34,13 +34,20 @@
     </style>
 </head>
 <body>
-<div class="container">
+
+<div class="container mt-5">
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
     <h1>Connexion</h1>
     <form action="{{ route('inserer') }}" method="POST">
         @csrf
         <div class="mb-3 col-md-6 offset-md-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required value="{{ old('email') }}">
+            <input type="email" class="form-control" id="email" name="email"  value="{{ old('email') }}">
             @error('email')
             <div class="text-danger">{{ $message }}</div>
             @enderror

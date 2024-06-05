@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-         .carousel-caption h5 {
+        .carousel-caption h5 {
             font-size: 4rem;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -88,16 +88,29 @@
 <section >
     <div >
         <div>
-        <img class="d-block w-100" style="height: 100vh" src="https://i.f1g.fr/media/eidos/805x453_crop/2022/02/25/XVMbb611c8c-9561-11ec-b001-059cef568df6.jpg" alt="First slide">
-        <div class="carousel-caption d-none d-md-block">
-            <h5>Bienvenue</h5>
-            <p>Explorez nos magnifiques biens immobiler avec des espaces lumineux et modernes.</p>
+            <img class="d-block w-100" style="height: 100vh" src="https://i.f1g.fr/media/eidos/805x453_crop/2022/02/25/XVMbb611c8c-9561-11ec-b001-059cef568df6.jpg" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Bienvenue</h5>
+                <p>Explorez nos magnifiques biens immobiler avec des espaces lumineux et modernes.</p>
+            </div>
         </div>
-    </div>
     </div>
 </section>
 
 <div class="container mt-5">
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+    
+    @if (session('statut'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('statut') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
     <div class="container mt-5">
         <div class="row">
             @foreach ($biens as $bien)
@@ -139,6 +152,31 @@
     
     
 </div>
+
+<footer class="text-center text-lg-start" style="background-color: #4A4A4B;">
+    <div class="container d-flex justify-content-center py-4">
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: transparent; border: none;">
+            <i class="fab fa-facebook-f"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: transparent; border: none;">
+            <i class="fab fa-youtube"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: transparent; border: none;">
+            <i class="fab fa-instagram"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: transparent; border: none;">
+            <i class="fab fa-twitter"></i>
+        </button>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">AgenceImmo.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -10,14 +10,16 @@ class Commentaire extends Model
 {
     use HasFactory;
 
+    // Les attributs qui sont assignables en masse
     protected $fillable = [
         'auteur',
         'contenu',
         'bien_id'
     ];
 
+    // Définition de la relation "un commentaire appartient à un bien"
     public function bien(): BelongsTo
     {
-        return $this->BelongsTo(Bien::class);
+        return $this->belongsTo(Bien::class);
     }
 }

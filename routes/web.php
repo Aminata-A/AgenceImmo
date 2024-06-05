@@ -36,7 +36,7 @@ Route::post('/biens/{id}/traiter', [BienController::class, 'traiter'])->name('bi
 Route::get('biens/supprimer/{id}', [BienController::class, 'supprimer'])->name('suppression')->where('id', '[0-9]+')->middleware('auth');
 
 // Route pour insérer un commentaire sur un bien spécifique
-Route::post('biens/{bien_id}/commentaires', [CommentaireController::class, 'insertion'])->name('insertion')->middleware('auth');
+Route::post('biens/{bien_id}/commentaires', [CommentaireController::class, 'insertion'])->name('insertion');
 
 // Routes pour l'inscription des utilisateurs
 Route::get("/inscrire", [RegisterController::class, 'creer'])->name('inscrire');

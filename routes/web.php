@@ -21,19 +21,19 @@ Route::get('/biens', [BienController::class, 'biens'])->name('biens');
 Route::get('/biens/{id}', [BienController::class, 'detail'])->name('detail')->where('id', '[0-9]+');
 
 // Route pour afficher le formulaire d'ajout d'un bien
-Route::get('biens/ajouter', [BienController::class, 'ajout'])->name('ajout');
+Route::get('biens/ajouter', [BienController::class, 'ajout'])->name('ajout')->middleware('auth');
 
 // Route pour sauvegarder un nouveau bien
-Route::post('biens/sauvegarder', [BienController::class, 'sauvegarde'])->name('sauvegarde');
+Route::post('biens/sauvegarder', [BienController::class, 'sauvegarde'])->name('sauvegarde')->middleware('auth');
 
 // Route pour afficher le formulaire de modification d'un bien spécifique, avec une contrainte sur l'id (doit être un chiffre)
-Route::get('biens/modifier/{id}', [BienController::class, 'modifier'])->name('modification')->where('id', '[0-9]+');
+Route::get('biens/modifier/{id}', [BienController::class, 'modifier'])->name('modification')->where('id', '[0-9]+')->middleware('auth');
 
 // Route pour traiter la modification d'un bien spécifique
-Route::post('/biens/{id}/traiter', [BienController::class, 'traiter'])->name('biens.traiter');
+Route::post('/biens/{id}/traiter', [BienController::class, 'traiter'])->name('biens.traiter')->middleware('auth');
 
 // Route pour supprimer un bien spécifique, avec une contrainte sur l'id (doit être un chiffre)
-Route::get('biens/supprimer/{id}', [BienController::class, 'supprimer'])->name('suppression')->where('id', '[0-9]+');
+Route::get('biens/supprimer/{id}', [BienController::class, 'supprimer'])->name('suppression')->where('id', '[0-9]+')->middleware('auth');
 
 // Route pour insérer un commentaire sur un bien spécifique
 Route::post('biens/{bien_id}/commentaires', [CommentaireController::class, 'insertion'])->name('insertion');
